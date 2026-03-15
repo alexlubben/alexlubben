@@ -222,6 +222,26 @@
       line-height: 1.5;
     }
 
+    /* ---------- DIVIDER IMAGE ---------- */
+    .divider-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      margin: 2.5rem 0 0;
+    }
+
+    @media (max-width: 600px) {
+      .divider-img {
+        height: 180px;
+        border-radius: 0;
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        width: calc(100% + 3rem);
+      }
+    }
+
     /* ---------- FEATURED (with image) ---------- */
     .work-item.featured {
       background: var(--highlight);
@@ -454,6 +474,8 @@
         <a href="https://www.linkedin.com/in/alexlubben/">LinkedIn</a>
       </div>
     </section>
+
+    <img class="divider-img" src="field.jpg" alt="Alex Lubben reporting on the Gulf Coast">
 
     <!-- SELECTED WORK -->
     <section class="work">
