@@ -237,6 +237,11 @@
       height: 220px;
       object-fit: cover;
       display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .work-item.featured:hover .featured-img {
+      transform: scale(1.04);
     }
 
     .work-item.featured .featured-body {
@@ -255,6 +260,16 @@
       border-radius: 3px;
       margin-bottom: 0.8rem;
       display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .work-item:hover .story-img {
+      transform: scale(1.03);
+    }
+
+    /* Clip overflow on hover zoom for non-featured items */
+    .work-item {
+      overflow: hidden;
     }
 
     /* ---------- CLIP LISTS ---------- */
@@ -331,6 +346,21 @@
 
     details .clip-list {
       margin-top: 0.3rem;
+      overflow: hidden;
+      animation: slideDown 0.35s ease forwards;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        max-height: 800px;
+        transform: translateY(0);
+      }
     }
 
     /* ---------- FOOTER ---------- */
@@ -449,23 +479,9 @@
         </div>
       </div>
 
-      <!-- Climate relocation with image -->
-      <div class="work-item">
-        <!--
-          REPLACE THIS IMAGE with a photo from your Isle de Jean Charles story.
-        -->
-        <!-- REPLACE with your own photo from the story -->
-        <img class="story-img" src="https://bloximages.newyork1.vip.townnews.com/nola.com/content/tncms/assets/v3/editorial/b/ba/bba315d8-f071-11ef-9954-2387748d80b4/67b8c1f1aae1b.cover.jpg?crop=1661%2C936%2C1%2C73" alt="Coastal Louisiana community" onerror="this.style.display='none'">
-        <h3><a href="https://www.nola.com/news/environment/isle-de-jean-charles-relocation-insurance-taxes-louisiana-coastline/article_bba315d8-f071-11ef-9954-2387748d80b4.html"><em>Will the nation's first climate relocation unravel?</em></a></h3>
-        <div class="pub-date">Times-Picayune, 2025</div>
-        <p>In 2016, a Louisiana tribal community became the focus of the first federally funded climate relocation in the United States. Nearly a decade later, I visited the residents in their new homes and found that property taxes, insurance costs, and utility bills are threatening to unravel the program. One resident is selling his truck to pay his tax bill. A Nebraska company has already bought a lien on his house.</p>
-        <div class="links">
-          <a href="https://www.nola.com/news/environment/isle-de-jean-charles-relocation-insurance-taxes-louisiana-coastline/article_bba315d8-f071-11ef-9954-2387748d80b4.html">Read the story</a>
-        </div>
-      </div>
-
       <!-- Harm's Way with image -->
       <div class="work-item">
+        <img class="story-img" src="https://publicintegrity.org/wp-content/uploads/2022/07/Still-13-64-2048x1365.jpg" alt="Harm's Way investigation" onerror="this.style.display='none'">
         <h3><a href="https://publicintegrity.org/topics/environment/harms-way/"><em>Harm's Way</em></a></h3>
         <div class="pub-date">Center for Public Integrity &amp; Type Investigations, 2023</div>
         <p>As a fellow with Columbia Journalism Investigations, I co-authored a national investigation into the failures of climate relocation programs across the United States.</p>
@@ -475,6 +491,17 @@
           <a href="https://publicintegrity.org/environment/harms-way/climate-change-impact-home-unsafe/">Personal account</a>
         </div>
         <div class="awards">Won an SABEW award and a NAREE award. Finalist for an SPJDC Dateline award. Semifinalist for the Goldsmith Prize.</div>
+      </div>
+
+      <!-- Climate relocation with image -->
+      <div class="work-item">
+        <img class="story-img" src="https://bloximages.newyork1.vip.townnews.com/nola.com/content/tncms/assets/v3/editorial/b/ba/bba315d8-f071-11ef-9954-2387748d80b4/67b8c1f1aae1b.cover.jpg?crop=1661%2C936%2C1%2C73" alt="Coastal Louisiana community" onerror="this.style.display='none'">
+        <h3><a href="https://www.nola.com/news/environment/isle-de-jean-charles-relocation-insurance-taxes-louisiana-coastline/article_bba315d8-f071-11ef-9954-2387748d80b4.html"><em>Will the nation's first climate relocation unravel?</em></a></h3>
+        <div class="pub-date">Times-Picayune, 2025</div>
+        <p>In 2016, a Louisiana tribal community became the focus of the first federally funded climate relocation in the United States. Nearly a decade later, I visited the residents in their new homes and found that property taxes, insurance costs, and utility bills are threatening to unravel the program. One resident is selling his truck to pay his tax bill. A Nebraska company has already bought a lien on his house.</p>
+        <div class="links">
+          <a href="https://www.nola.com/news/environment/isle-de-jean-charles-relocation-insurance-taxes-louisiana-coastline/article_bba315d8-f071-11ef-9954-2387748d80b4.html">Read the story</a>
+        </div>
       </div>
 
       <!-- Lithium -->
@@ -494,6 +521,17 @@
         </div>
       </div>
 
+      <!-- Northlake Behavioral Health -->
+      <div class="work-item">
+        <h3><a href="https://www.nola.com/news/northshore/federal-reports-show-dire-conditions-at-mandeville-hospital-northlake/article_c8a183a8-9b6f-11ee-a7a2-5774035c855f.html"><em>Federal reports describe dire conditions at psychiatric hospital in Mandeville</em></a></h3>
+        <div class="pub-date">Times-Picayune, 2023</div>
+        <p>Federal inspection reports I obtained revealed dire conditions inside Northlake Behavioral Health, a psychiatric hospital in Mandeville that was repeatedly cited for placing patients' lives in "immediate jeopardy." The state later put the hospital on a provisional license.</p>
+        <div class="links">
+          <a href="https://www.nola.com/news/northshore/federal-reports-show-dire-conditions-at-mandeville-hospital-northlake/article_c8a183a8-9b6f-11ee-a7a2-5774035c855f.html">Read the story</a>
+        </div>
+        <div class="awards">Won 3rd place, news story, Louisiana Press Association.</div>
+      </div>
+
       <!-- Food Stamps -->
       <div class="work-item">
         <h3><a href="https://nysfocus.com/2023/05/15/food-stamps-snap-illegal-delays"><em>Need Food Stamps in New York? Come Back in a Few Months</em></a></h3>
@@ -508,7 +546,7 @@
       <div class="work-item">
         <h3><a href="https://www.vice.com/en/article/k7bp5e/houston-mobile-home-buyout-flood-risks"><em>Houston's solution to climate change is to force low-income people to move</em></a></h3>
         <div class="pub-date">VICE News, 2022</div>
-        <p>In October 2022, I went to Texas to cover an unprecedented "mandatory flood buyout" program that was forcing low-income residents to relocate due to escalating flood risk. Following our reporting, Harris County provided additional funding for some undocumented residents &mdash; up to $230,000 in relocation assistance, up from $30,000.</p>
+        <p>I covered a mandatory relocation program in Texas &mdash; the first of its kind &mdash; that sought to force low-income residents to move as flood risk escalated. Following our reporting, Harris County increased relocation assistance for some undocumented residents from $30,000 to up to $230,000.</p>
         <div class="links">
           <a href="https://www.vice.com/en/article/k7bp5e/houston-mobile-home-buyout-flood-risks">Read the story</a>
         </div>
@@ -524,7 +562,7 @@
         <ul class="clip-list">
           <li><a href="https://www.nola.com/news/politics/new-orleans-levee-board-flooding-hurricanes-government-jeff-landry/article_8ecc5aa5-6b47-4e93-b556-45b1063639fb.html">New Orleans levee board sees rising turmoil after resignations, allegation police chief was punched</a></li>
           <li><a href="https://www.nola.com/news/environment/new-orleans-flood-board-conflict-jeff-landry-hurricanes/article_f92e4778-5f92-4efa-a1fd-9de6d38410e1.html">'Hit me': Tensions boil over at New Orleans flood protection agency over controversial changes</a></li>
-          <li><a href="https://www.nola.com/news/northshore/federal-reports-show-dire-conditions-at-mandeville-hospital-northlake/article_c8a183a8-9b6f-11ee-a7a2-5774035c855f.html">Federal reports describe dire conditions at psychiatric hospital in Mandeville</a> <span class="note">&mdash; Won 3rd place, news story, Louisiana Press Association</span></li>
+
           <li><a href="https://www.nola.com/news/healthcare_hospitals/what-is-the-future-of-northlake-behavioral-health-system/article_e5218958-f90a-11ee-ab91-072e26520f37.html">State gives troubled Mandeville psychiatric hospital one last chance to stay open</a></li>
           <li><a href="https://www.nola.com/news/northshore/research-mosquitofish-mosquito-drainage-northshore/article_fa73afb2-6908-11ee-a18f-0f8e7dbe4dcb.html">A mosquito-eating fish faces a bizarre mutation. Is the northshore's sewage to blame?</a></li>
           <li><a href="https://www.nola.com/news/environment/northshore-homes-are-leaking-raw-sewage-and-polluting-lake-pontchartrain-will-a-new-law-help/article_d353b6e8-8569-11ee-afaf-d343aa350b7c.html">Northshore homes are leaking raw sewage and polluting Lake Pontchartrain. Will a new law help?</a></li>
