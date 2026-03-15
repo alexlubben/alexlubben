@@ -15,11 +15,12 @@
       --paper: #faf8f5;
       --mid: #6b6560;
       --accent: #c0452a;
+      --accent-hover: #922f1a;
       --rule: #d6d0c8;
       --highlight: #f0ebe4;
       --serif: 'Source Serif 4', 'Georgia', serif;
       --sans: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
-      --measure: 640px;
+      --measure: 660px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,13 +45,13 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    a:hover { color: #922f1a; }
+    a:hover { color: var(--accent-hover); }
 
     /* ---------- HEADER ---------- */
     .site-header {
       max-width: var(--measure);
       margin: 0 auto;
-      padding: 4rem 1.5rem 0;
+      padding: 4.5rem 1.5rem 0;
     }
 
     .site-header h1 {
@@ -59,17 +60,17 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.1;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
 
     .site-header .tagline {
       font-family: var(--sans);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 500;
       color: var(--mid);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 2rem;
+      margin-bottom: 2.2rem;
     }
 
     /* ---------- LAYOUT ---------- */
@@ -96,14 +97,14 @@
       color: var(--ink);
     }
 
-    .bio p:last-child { margin-bottom: 0; }
+    .bio p:last-of-type { margin-bottom: 0; }
 
     .portrait {
       display: block;
       width: 100%;
-      max-width: 360px;
+      max-width: 340px;
       margin: 2rem auto;
-      border-radius: 4px;
+      border-radius: 3px;
     }
 
     /* ---------- CONTACT ---------- */
@@ -122,26 +123,50 @@
     }
 
     .contact .secure-note {
-      font-size: 0.95rem;
-      color: var(--ink);
-      line-height: 1.7;
-      margin-top: 0.8rem;
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.65;
+      margin-top: 0.6rem;
+      font-style: italic;
     }
 
     .social-links {
-      margin-top: 1rem;
-      font-family: var(--sans);
-      font-size: 0.85rem;
+      margin-top: 1.2rem;
+      display: flex;
+      gap: 0;
     }
 
     .social-links a {
-      margin-right: 1.2rem;
-      font-weight: 500;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--rule);
+      border-right: none;
+      transition: color 0.2s, background 0.2s, border-color 0.2s;
+    }
+
+    .social-links a:first-child {
+      border-radius: 3px 0 0 3px;
+    }
+
+    .social-links a:last-child {
+      border-right: 1px solid var(--rule);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(192, 69, 42, 0.04);
     }
 
     /* ---------- SELECTED WORK ---------- */
     .work-item {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.8rem;
     }
 
     .work-item:last-child { margin-bottom: 0; }
@@ -197,27 +222,48 @@
       line-height: 1.5;
     }
 
-    /* ---------- CLIP LISTS ---------- */
-    .clips-group {
-      margin-bottom: 2rem;
+    /* ---------- FEATURED (with image) ---------- */
+    .work-item.featured {
+      background: var(--highlight);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      padding: 0;
     }
 
-    .clips-group h3 {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--mid);
+    .work-item.featured .featured-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .work-item.featured .featured-body {
+      padding: 1.3rem 1.5rem 1.5rem;
+    }
+
+    .work-item.featured h3 {
+      font-size: 1.25rem;
+    }
+
+    /* ---------- STORY THUMBNAIL ---------- */
+    .work-item .story-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 3px;
       margin-bottom: 0.8rem;
+      display: block;
     }
 
+    /* ---------- CLIP LISTS ---------- */
     .clip-list {
       list-style: none;
     }
 
     .clip-list li {
-      padding: 0.45rem 0;
+      padding: 0.5rem 0;
       border-bottom: 1px solid var(--rule);
       font-size: 0.92rem;
       line-height: 1.45;
@@ -240,7 +286,7 @@
 
     /* ---------- EXPANDABLE SECTIONS ---------- */
     details {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     details summary {
@@ -249,11 +295,16 @@
       font-weight: 600;
       color: var(--accent);
       cursor: pointer;
-      padding: 0.3rem 0;
+      padding: 0.45rem 0;
       list-style: none;
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      transition: color 0.2s;
+    }
+
+    details summary:hover {
+      color: var(--accent-hover);
     }
 
     details summary::-webkit-details-marker { display: none; }
@@ -262,22 +313,31 @@
       content: '+';
       font-size: 0.9rem;
       font-weight: 600;
-      transition: transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
     }
 
     details[open] summary::before {
-      content: '−';
+      content: '\2212';
+      transform: rotate(180deg);
     }
 
     details .clip-list {
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
     }
 
     /* ---------- FOOTER ---------- */
     .site-footer {
       max-width: var(--measure);
       margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
+      padding: 2rem 1.5rem 3.5rem;
       border-top: 1px solid var(--rule);
       font-family: var(--sans);
       font-size: 0.75rem;
@@ -290,16 +350,45 @@
       .site-header { padding-top: 2.5rem; }
       .site-header h1 { font-size: 2.2rem; }
       .contact h2, .work h2, .clips h2 { font-size: 1.5rem; }
+
+      .work-item.featured {
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        border-radius: 0;
+      }
+
+      .work-item.featured .featured-img {
+        height: 180px;
+      }
+
+      .work-item .story-img {
+        height: 150px;
+      }
+
+      .social-links {
+        flex-wrap: wrap;
+      }
     }
 
     /* ---------- FADE IN ---------- */
-    .content, .site-header {
-      animation: fadeUp 0.6s ease both;
+    .site-header,
+    .content section {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.5s ease forwards;
     }
 
+    .site-header { animation-delay: 0s; }
+    .content section:nth-of-type(1) { animation-delay: 0.08s; }
+    .content section:nth-of-type(2) { animation-delay: 0.16s; }
+    .content section:nth-of-type(3) { animation-delay: 0.24s; }
+    .content section:nth-of-type(4) { animation-delay: 0.32s; }
+
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -307,7 +396,7 @@
 
   <header class="site-header">
     <h1>Alex Lubben</h1>
-    <div class="tagline">Reporter · The Times-Picayune · New Orleans</div>
+    <div class="tagline">Reporter &middot; The Times-Picayune &middot; New Orleans</div>
   </header>
 
   <main class="content">
@@ -318,13 +407,14 @@
 
       <p>I've also reported for VICE News, New York Focus, and Columbia Journalism Investigations, where I co-authored a <a href="https://publicintegrity.org/topics/environment/harms-way/">national investigation</a> into the failures of climate relocation programs across the United States. My work has been published by The Center for Public Integrity, SSENSE, The Nation, Jewish Currents, and NBC News, among other outlets. I have an MA in science journalism from Columbia University.</p>
 
-      <img class="portrait" src="portrait.jpg" alt="Alex Lubben">
+      <!-- Replace this src with your actual portrait URL or local file -->
+      <img class="portrait" src="https://raw.githubusercontent.com/alexlubben/alexlubben/main/portrait.jpg" alt="Alex Lubben">
     </section>
 
     <!-- GET IN TOUCH -->
     <section class="contact">
       <h2>Get in touch</h2>
-      <p>For sensitive tips, I use <a href="https://signal.org/">Signal</a>: reach me at alexlubben.16. You can also send encrypted email using my <a href="https://keys.openpgp.org/search?q=alexlubben@gmail.com">PGP public key</a>. For everything else, email me at <a href="mailto:alexlubben@gmail.com">alexlubben@gmail.com</a> or <a href="mailto:alex.lubben@theadvocate.com">alex.lubben@theadvocate.com</a>.</p>
+      <p>For sensitive tips, I use <a href="https://signal.org/">Signal</a>: reach me at alexlubben.16. You can also send encrypted email using my <a href="https://keys.openpgp.org/search?q=alexlubben@gmail.com">PGP public key</a>. For everything else, email me at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;alexlubben&#64;gmail&#46;com">alexlubben&#64;gmail&#46;com</a> or <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;alex&#46;lubben&#64;theadvocate&#46;com">alex&#46;lubben&#64;theadvocate&#46;com</a>.</p>
 
       <div class="secure-note">I take source protection seriously. If you're unsure which method to use, Signal is the easiest secure option. If your situation requires extra caution, don't contact me from a work device or network.</div>
 
@@ -339,17 +429,33 @@
     <section class="work">
       <h2>Selected Work</h2>
 
-      <div class="work-item">
-        <h3><a href="https://www.nola.com/news/environment/louisiana-sunken-oil-wells-boat-hazards/article_7f44f128-57cd-4952-9565-1056703dfe63.html"><em>Sinking into the Gulf</em></a></h3>
-        <div class="pub-date">Times-Picayune, 2025</div>
-        <p>For The Times-Picayune, I built an original dataset to find that more than 3,600 oil wells drilled on land along Louisiana's coast have sunk into the Gulf of Mexico as the land around them disappeared. Many are leaking. Hundreds may fall to taxpayers to clean up. The state doesn't track them.</p>
-        <div class="links">
-          <a href="https://www.nola.com/news/environment/louisiana-sunken-oil-wells-boat-hazards/article_7f44f128-57cd-4952-9565-1056703dfe63.html">Read the story</a>
-          <a href="https://www.nola.com/news/environment/coastal-oil-wells-methodology/article_c33023e4-4c99-41ce-8835-2cd1911564e5.html">Methodology</a>
+      <!-- FEATURED: Sinking into the Gulf -->
+      <div class="work-item featured">
+        <!--
+          REPLACE THIS IMAGE with a photo from your "Sinking into the Gulf" story.
+          Ideal size: ~1200px wide, landscape orientation.
+          Example: a photo of oil well infrastructure in open water.
+        -->
+        <!-- REPLACE with your own photo from the story. Ideal: ~1200px wide, landscape. -->
+        <img class="featured-img" src="https://bloximages.newyork1.vip.townnews.com/nola.com/content/tncms/assets/v3/editorial/0/27/027d0a20-a82f-5d5d-8bcb-53f1c984d3f3/6851adcc25ac0.image.jpg" alt="Oil infrastructure in the Gulf of Mexico" onerror="this.style.display='none'">
+        <div class="featured-body">
+          <h3><a href="https://www.nola.com/news/environment/louisiana-sunken-oil-wells-boat-hazards/article_7f44f128-57cd-4952-9565-1056703dfe63.html"><em>Sinking into the Gulf</em></a></h3>
+          <div class="pub-date">Times-Picayune, 2025</div>
+          <p>For The Times-Picayune, I built an original dataset to find that more than 3,600 oil wells drilled on land along Louisiana's coast have sunk into the Gulf of Mexico as the land around them disappeared. Many are leaking. Hundreds may fall to taxpayers to clean up. The state doesn't track them.</p>
+          <div class="links">
+            <a href="https://www.nola.com/news/environment/louisiana-sunken-oil-wells-boat-hazards/article_7f44f128-57cd-4952-9565-1056703dfe63.html">Read the story</a>
+            <a href="https://www.nola.com/news/environment/coastal-oil-wells-methodology/article_c33023e4-4c99-41ce-8835-2cd1911564e5.html">Methodology</a>
+          </div>
         </div>
       </div>
 
+      <!-- Climate relocation with image -->
       <div class="work-item">
+        <!--
+          REPLACE THIS IMAGE with a photo from your Isle de Jean Charles story.
+        -->
+        <!-- REPLACE with your own photo from the story -->
+        <img class="story-img" src="https://bloximages.newyork1.vip.townnews.com/nola.com/content/tncms/assets/v3/editorial/b/ba/bba315d8-f071-11ef-9954-2387748d80b4/67b8c1f1aae1b.cover.jpg?crop=1661%2C936%2C1%2C73" alt="Coastal Louisiana community" onerror="this.style.display='none'">
         <h3><a href="https://www.nola.com/news/environment/isle-de-jean-charles-relocation-insurance-taxes-louisiana-coastline/article_bba315d8-f071-11ef-9954-2387748d80b4.html"><em>Will the nation's first climate relocation unravel?</em></a></h3>
         <div class="pub-date">Times-Picayune, 2025</div>
         <p>In 2016, a Louisiana tribal community became the focus of the first federally funded climate relocation in the United States. Nearly a decade later, I visited the residents in their new homes and found that property taxes, insurance costs, and utility bills are threatening to unravel the program. One resident is selling his truck to pay his tax bill. A Nebraska company has already bought a lien on his house.</p>
@@ -358,6 +464,7 @@
         </div>
       </div>
 
+      <!-- Harm's Way with image -->
       <div class="work-item">
         <h3><a href="https://publicintegrity.org/topics/environment/harms-way/"><em>Harm's Way</em></a></h3>
         <div class="pub-date">Center for Public Integrity &amp; Type Investigations, 2023</div>
@@ -370,29 +477,38 @@
         <div class="awards">Won an SABEW award and a NAREE award. Finalist for an SPJDC Dateline award. Semifinalist for the Goldsmith Prize.</div>
       </div>
 
+      <!-- Lithium -->
       <div class="work-item">
+        
+        <!--
+          REPLACE THIS IMAGE with a photo from the Harm's Way series.
+        -->
+        <!-- REPLACE with your own photo from the series -->
+        <img class="story-img" src="https://img.youtube.com/vi/JmFSZrCDEIo/maxresdefault.jpg" alt="A lithium-rich pond in Railroad Valley" onerror="this.style.display='none'">
         <h3><a href="https://www.vice.com/en/article/bvjned/lithium-mining-nevada-claims"><em>Inside the "White Gold" Rush to Mine American Lithium</em></a></h3>
         <div class="pub-date">VICE News, 2023</div>
-        <p>I went to Nevada to meet the modern-day prospectors on the hunt for lithium in the American West. There's a rush underway and private companies are making money speculating on the high concentrations of lithium on public lands — but no new mines are being built. It's a lithium rush without any lithium.</p>
+        <p>I went to Nevada to meet the modern-day prospectors on the hunt for lithium in the American West. There's a rush underway and private companies are making money speculating on the high concentrations of lithium on public lands &mdash; but no new mines are being built. It's a lithium rush without any lithium.</p>
         <div class="links">
           <a href="https://www.vice.com/en/article/bvjned/lithium-mining-nevada-claims">Read the story</a>
           <a href="https://www.youtube.com/watch?v=JmFSZrCDEIo">Watch the VICE News Tonight segment</a>
         </div>
       </div>
 
+      <!-- Food Stamps -->
       <div class="work-item">
         <h3><a href="https://nysfocus.com/2023/05/15/food-stamps-snap-illegal-delays"><em>Need Food Stamps in New York? Come Back in a Few Months</em></a></h3>
         <div class="pub-date">New York Focus, 2023</div>
-        <p>Data showed that counties across New York force families to wait months for food stamps — a violation of federal law. Anyone who applies for food stamps is owed a response within 30 days but in some parts of the state, more than half of SNAP applications were processed illegally late.</p>
+        <p>Data showed that counties across New York force families to wait months for food stamps &mdash; a violation of federal law. Anyone who applies for food stamps is owed a response within 30 days but in some parts of the state, more than half of SNAP applications were processed illegally late.</p>
         <div class="links">
           <a href="https://nysfocus.com/2023/05/15/food-stamps-snap-illegal-delays">Read the story</a>
         </div>
       </div>
 
+      <!-- Houston -->
       <div class="work-item">
         <h3><a href="https://www.vice.com/en/article/k7bp5e/houston-mobile-home-buyout-flood-risks"><em>Houston's solution to climate change is to force low-income people to move</em></a></h3>
         <div class="pub-date">VICE News, 2022</div>
-        <p>In October 2022, I went to Texas to cover an unprecedented "mandatory flood buyout" program that was forcing low-income residents to relocate due to escalating flood risk. Following our reporting, Harris County provided additional funding for some undocumented residents — up to $230,000 in relocation assistance, up from $30,000.</p>
+        <p>In October 2022, I went to Texas to cover an unprecedented "mandatory flood buyout" program that was forcing low-income residents to relocate due to escalating flood risk. Following our reporting, Harris County provided additional funding for some undocumented residents &mdash; up to $230,000 in relocation assistance, up from $30,000.</p>
         <div class="links">
           <a href="https://www.vice.com/en/article/k7bp5e/houston-mobile-home-buyout-flood-risks">Read the story</a>
         </div>
@@ -408,12 +524,12 @@
         <ul class="clip-list">
           <li><a href="https://www.nola.com/news/politics/new-orleans-levee-board-flooding-hurricanes-government-jeff-landry/article_8ecc5aa5-6b47-4e93-b556-45b1063639fb.html">New Orleans levee board sees rising turmoil after resignations, allegation police chief was punched</a></li>
           <li><a href="https://www.nola.com/news/environment/new-orleans-flood-board-conflict-jeff-landry-hurricanes/article_f92e4778-5f92-4efa-a1fd-9de6d38410e1.html">'Hit me': Tensions boil over at New Orleans flood protection agency over controversial changes</a></li>
-          <li><a href="https://www.nola.com/news/northshore/federal-reports-show-dire-conditions-at-mandeville-hospital-northlake/article_c8a183a8-9b6f-11ee-a7a2-5774035c855f.html">Federal reports describe dire conditions at psychiatric hospital in Mandeville</a> <span class="note">— Won 3rd place, news story, Louisiana Press Association</span></li>
+          <li><a href="https://www.nola.com/news/northshore/federal-reports-show-dire-conditions-at-mandeville-hospital-northlake/article_c8a183a8-9b6f-11ee-a7a2-5774035c855f.html">Federal reports describe dire conditions at psychiatric hospital in Mandeville</a> <span class="note">&mdash; Won 3rd place, news story, Louisiana Press Association</span></li>
           <li><a href="https://www.nola.com/news/healthcare_hospitals/what-is-the-future-of-northlake-behavioral-health-system/article_e5218958-f90a-11ee-ab91-072e26520f37.html">State gives troubled Mandeville psychiatric hospital one last chance to stay open</a></li>
           <li><a href="https://www.nola.com/news/northshore/research-mosquitofish-mosquito-drainage-northshore/article_fa73afb2-6908-11ee-a18f-0f8e7dbe4dcb.html">A mosquito-eating fish faces a bizarre mutation. Is the northshore's sewage to blame?</a></li>
           <li><a href="https://www.nola.com/news/environment/northshore-homes-are-leaking-raw-sewage-and-polluting-lake-pontchartrain-will-a-new-law-help/article_d353b6e8-8569-11ee-afaf-d343aa350b7c.html">Northshore homes are leaking raw sewage and polluting Lake Pontchartrain. Will a new law help?</a></li>
           <li><a href="https://www.nola.com/news/environment/die-hards-wont-give-up-search-for-ivory-billed-woodpecker/article_30f28bc8-9094-11ee-a05d-83125e6c55d7.html">Extinct? Not extinct? Die-hards refuse to give up on ivory-billed woodpecker.</a></li>
-          <li><a href="https://www.nola.com/news/traffic/interstate-55-crash-survivors-share-stories-of-pileup/article_7d80bba2-71f1-11ee-9412-473c59ec8ab9.html">Survivors of Louisiana I-55 crash recall the terror.</a> <span class="note">— Part of coverage winning 2nd place, deadline reporting, Green Eyeshade Awards</span></li>
+          <li><a href="https://www.nola.com/news/traffic/interstate-55-crash-survivors-share-stories-of-pileup/article_7d80bba2-71f1-11ee-9412-473c59ec8ab9.html">Survivors of Louisiana I-55 crash recall the terror.</a> <span class="note">&mdash; Part of coverage winning 2nd place, deadline reporting, Green Eyeshade Awards</span></li>
         </ul>
       </details>
 
@@ -424,28 +540,15 @@
           <li><a href="https://news.vice.com/en_us/article/3kpy9w/epa-staffers-are-being-forced-to-retire-or-face-massive-cuts">Demoralized EPA employees brace for 'wholesale war on the environment'</a></li>
           <li><a href="https://www.vice.com/en_us/article/ned44g/trumps-nominee-for-texas-federal-judge-jeff-mateer-admits-he-discriminates-against-lgbtq-people">Hear Trump's judge pick admit he discriminates against gay people</a></li>
           <li><a href="https://www.vice.com/en_us/article/9kejqe/the-keystone-oil-spill-no-ones-talking-about-will-be-nearly-impossible-to-clean-up">The Keystone oil spill no one's talking about will be nearly impossible to clean up</a></li>
-          <li><a href="https://www.vice.com/en_us/article/bjwa7v/pgandes-blackouts-are-making-it-harder-to-measure-the-toxic-stew-in-the-air-from-californias-wildfires">PG&E's blackouts are making it harder to measure California's wildfire air quality</a></li>
+          <li><a href="https://www.vice.com/en_us/article/bjwa7v/pgandes-blackouts-are-making-it-harder-to-measure-the-toxic-stew-in-the-air-from-californias-wildfires">PG&amp;E's blackouts are making it harder to measure California's wildfire air quality</a></li>
         </ul>
       </details>
 
       <details>
         <summary>Freelance</summary>
         <ul class="clip-list">
-          <li><a href="https://www.nbcnews.com/science/environment/climate-change-wipe-108-billion-us-property-market-study-finds-rcna47325">Climate change could wipe $108 billion from U.S. property market, study finds</a> <span class="note">— NBC News</span></li>
-          <li><a href="https://www.thenation.com/article/archive/the-climate-wont-stop-changing-in-2100/">The climate won't stop changing in 2100</a> <span class="note">— The Nation</span></li>
-          <li><a href="https://jewishcurrents.org/changing-the-climate/">Changing the climate</a> <span class="note">— Jewish Currents (review of Naomi Klein's <em>On Fire</em>)</span></li>
-          <li><a href="https://www.theawl.com/2017/01/the-founders-dilemma/">The founder's dilemma</a> <span class="note">— The Awl</span></li>
-          <li><a href="https://www.ssense.com/en-us/editorial/fashion/consider-the-shroom">Consider the shroom</a> <span class="note">— SSENSE</span></li>
-        </ul>
-      </details>
-
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    &copy; Alex Lubben
-  </footer>
-
-</body>
-</html>
+          <li><a href="https://www.nbcnews.com/science/environment/climate-change-wipe-108-billion-us-property-market-study-finds-rcna47325">Climate change could wipe $108 billion from U.S. property market, study finds</a> <span class="note">&mdash; NBC News</span></li>
+          <li><a href="https://www.thenation.com/article/archive/the-climate-wont-stop-changing-in-2100/">The climate won't stop changing in 2100</a> <span class="note">&mdash; The Nation</span></li>
+          <li><a href="https://jewishcurrents.org/changing-the-climate/">Changing the climate</a> <span class="note">&mdash; Jewish Currents (review of Naomi Klein's <em>On Fire</em>)</span></li>
+          <li><a href="https://www.theawl.com/2017/01/the-founders-dilemma/">The founder's dilemma</a> <span class="note">&mdash; The Awl</span></li>
+          <li><
