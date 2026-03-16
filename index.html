@@ -79,19 +79,6 @@
       letter-spacing: -0.02em;
       line-height: 1.1;
       margin-bottom: 0.25rem;
-      display: inline-block;
-    }
-
-    .site-header h1 .letter {
-      display: inline-block;
-      animation: squiggle 2.5s ease-in-out infinite;
-    }
-
-    @keyframes squiggle {
-      0%, 100% { transform: translateX(0) translateY(0); }
-      25% { transform: translateX(3px) translateY(-2px); }
-      50% { transform: translateX(0) translateY(2px); }
-      75% { transform: translateX(-3px) translateY(-1px); }
     }
 
     .site-header .tagline {
@@ -597,7 +584,7 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header class="site-header">
-    <h1 id="name-squiggle">Alex Lubben</h1>
+    <h1>Alex Lubben</h1>
     <div class="tagline">Reporter &middot; The Times-Picayune &middot; New Orleans</div>
   </header>
 
@@ -765,21 +752,5 @@
     &copy; 2025 Alex Lubben
   </footer>
 
-  <script>
-    const h1 = document.getElementById('name-squiggle');
-    const text = h1.textContent;
-    h1.innerHTML = '';
-    for (let i = 0; i < text.length; i++) {
-      const span = document.createElement('span');
-      span.textContent = text[i];
-      if (text[i] === ' ') {
-        span.innerHTML = '&nbsp;';
-      } else {
-        span.className = 'letter';
-        span.style.animationDelay = (i * 0.12) + 's';
-      }
-      h1.appendChild(span);
-    }
-  </script>
 </body>
 </html>
