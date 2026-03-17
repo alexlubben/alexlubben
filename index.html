@@ -76,6 +76,7 @@
       max-width: var(--measure-wide);
       margin: 0 auto;
       padding: 4.5rem 1.5rem 0;
+      position: relative;
     }
 
     .site-header h1 {
@@ -95,6 +96,44 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 2.2rem;
+    }
+
+    .header-nav {
+      position: absolute;
+      top: 4.5rem;
+      right: 1.5rem;
+      display: flex;
+      gap: 0;
+    }
+
+    .header-nav a {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--rule);
+      margin-left: -1px;
+      position: relative;
+      transition: color 0.2s, background 0.2s, border-color 0.2s;
+    }
+
+    .header-nav a:first-child {
+      border-radius: 3px 0 0 3px;
+      margin-left: 0;
+    }
+
+    .header-nav a:last-child {
+      border-radius: 0 3px 3px 0;
+    }
+
+    .header-nav a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(45, 90, 60, 0.08);
+      z-index: 1;
     }
 
     /* ---------- LAYOUT ---------- */
@@ -152,6 +191,19 @@
       overflow: hidden;
       border-radius: 3px;
       align-self: stretch;
+    }
+
+    /* ---------- BIO DIVIDER ---------- */
+    .bio-divider {
+      max-width: var(--measure-wide);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .bio-divider hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0;
     }
 
     /* ---------- CONTACT ---------- */
@@ -452,6 +504,12 @@
       html { font-size: 16px; }
       .site-header { padding-top: 2.5rem; }
       .site-header h1 { font-size: 2.2rem; }
+
+      .header-nav {
+        position: static;
+        margin-top: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
       .contact h2, .work h2, .clips h2 { font-size: 1.5rem; }
 
       .bio {
@@ -541,7 +599,8 @@
         color: #b8b3a8;
       }
 
-      .social-links a:hover {
+      .social-links a:hover,
+      .header-nav a:hover {
         background: rgba(93, 171, 122, 0.12);
       }
 
@@ -574,7 +633,8 @@
 
       .social-links,
       .skip-link,
-      .divider {
+      .divider,
+      .header-nav {
         display: none;
       }
 
@@ -654,6 +714,10 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header class="site-header">
+    <nav class="header-nav">
+      <a href="#contact">Get in Touch</a>
+      <a href="#selected-work">Selected Work</a>
+    </nav>
     <h1>Alex Lubben</h1>
     <div class="tagline">Reporter &middot; The Times-Picayune &middot; New Orleans</div>
   </header>
@@ -668,10 +732,12 @@
     </div>
   </section>
 
+  <div class="bio-divider"><hr></div>
+
   <main id="main-content" class="content">
 
     <!-- GET IN TOUCH -->
-    <section class="contact">
+    <section id="contact" class="contact">
       <h2>Get in touch</h2>
       <p>For sensitive tips, I use <a href="https://signal.me/#eu/oRxYI4_nsGPcKxb8Ja20OyD170SXUQvxo-3BYo6y2r6GS-AiwHFJWK9BmZgvDVbQ">Signal</a>. You can also send encrypted email using my <a href="https://keys.openpgp.org/search?q=alexlubben@gmail.com">PGP public key</a>. For everything else, email me at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;alexlubben&#64;gmail&#46;com">alexlubben&#64;gmail&#46;com</a> or <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;alex&#46;lubben&#64;theadvocate&#46;com">alex&#46;lubben&#64;theadvocate&#46;com</a>.</p>
 
@@ -685,7 +751,7 @@
     </section>
 
     <!-- SELECTED WORK -->
-    <section class="work">
+    <section id="selected-work" class="work">
       <h2>Selected Work</h2>
 
       <!-- FEATURED: Sinking into the Gulf -->
