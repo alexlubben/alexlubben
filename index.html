@@ -71,11 +71,52 @@
     }
     a:hover { color: var(--accent-hover); }
 
+    /* ---------- TOP BAR ---------- */
+    .top-bar {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .top-bar-inner {
+      max-width: var(--measure-wide);
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-bar-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .top-bar-nav {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    .top-bar-nav a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+
+    .top-bar-nav a:hover {
+      color: var(--accent);
+    }
+
     /* ---------- HEADER ---------- */
     .site-header {
       max-width: var(--measure-wide);
       margin: 0 auto;
-      padding: 4.5rem 1.5rem 0;
+      padding: 2.5rem 1.5rem 0;
       position: relative;
     }
 
@@ -96,44 +137,6 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 2.2rem;
-    }
-
-    .header-nav {
-      position: absolute;
-      top: 4.5rem;
-      right: 1.5rem;
-      display: flex;
-      gap: 0;
-    }
-
-    .header-nav a {
-      font-family: var(--sans);
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--mid);
-      padding: 0.45rem 0.9rem;
-      border: 1px solid var(--rule);
-      margin-left: -1px;
-      position: relative;
-      transition: color 0.2s, background 0.2s, border-color 0.2s;
-    }
-
-    .header-nav a:first-child {
-      border-radius: 3px 0 0 3px;
-      margin-left: 0;
-    }
-
-    .header-nav a:last-child {
-      border-radius: 0 3px 3px 0;
-    }
-
-    .header-nav a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-      background: rgba(45, 90, 60, 0.08);
-      z-index: 1;
     }
 
     /* ---------- LAYOUT ---------- */
@@ -490,10 +493,10 @@
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 600px) {
       html { font-size: 16px; }
-      .site-header { padding-top: 2.5rem; }
+      .site-header { padding-top: 1.5rem; }
       .site-header h1 { font-size: 2.2rem; }
 
-      .header-nav {
+      .top-bar-nav {
         display: none;
       }
       .contact h2, .work h2, .clips h2 { font-size: 1.5rem; }
@@ -547,6 +550,7 @@
     }
 
     /* ---------- FADE IN ---------- */
+    .top-bar,
     .site-header,
     .bio,
     .content section {
@@ -555,6 +559,7 @@
       animation: fadeUp 0.5s ease forwards;
     }
 
+    .top-bar { animation-delay: 0s; }
     .site-header { animation-delay: 0s; }
     .bio { animation-delay: 0.08s; }
     .content section:nth-of-type(1) { animation-delay: 0.16s; }
@@ -585,8 +590,7 @@
         color: #b8b3a8;
       }
 
-      .social-links a:hover,
-      .header-nav a:hover {
+      .social-links a:hover {
         background: rgba(93, 171, 122, 0.12);
       }
 
@@ -611,7 +615,7 @@
         font-size: 12pt;
       }
 
-      .site-header, .bio, .content section {
+      .top-bar, .site-header, .bio, .content section {
         animation: none;
         opacity: 1;
         transform: none;
@@ -620,7 +624,7 @@
       .social-links,
       .skip-link,
       .divider,
-      .header-nav {
+      .top-bar {
         display: none;
       }
 
@@ -699,11 +703,17 @@
 
   <a class="skip-link" href="#main-content">Skip to content</a>
 
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <a href="#" class="top-bar-name">Alex Lubben</a>
+      <nav class="top-bar-nav">
+        <a href="#contact">Get in Touch</a>
+        <a href="#selected-work">Selected Work</a>
+      </nav>
+    </div>
+  </div>
+
   <header class="site-header">
-    <nav class="header-nav">
-      <a href="#contact">Get in Touch</a>
-      <a href="#selected-work">Selected Work</a>
-    </nav>
     <h1>Alex Lubben</h1>
     <div class="tagline">Reporter &middot; The Times-Picayune &middot; New Orleans</div>
   </header>
